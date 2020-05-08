@@ -1,9 +1,8 @@
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseModel } from 'src/shared/models/base.model';
+import { Column, Entity } from 'typeorm';
 
-export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+@Entity()
+export class User extends BaseModel {
   @Column()
   email: string;
 
