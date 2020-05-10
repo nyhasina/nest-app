@@ -7,6 +7,11 @@ export class User {
   id: number;
 
   @Column()
+  username: string;
+
+  @Column({
+    nullable: true
+  })
   email: string;
 
   @Column() @Exclude()
