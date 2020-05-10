@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { User } from 'src/user/user.model';
 import { UserService } from 'src/user/user.service';
 
@@ -21,8 +21,8 @@ export class UserController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number): Promise<User> {
-    return this.userService.findOne(id);
+  findOneById(@Param('id') id: number): Promise<User> {
+    return this.userService.findOne({ id });
   }
 
   @Put(':id')
