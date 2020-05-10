@@ -22,11 +22,12 @@ export class BaseService<T> {
   }
 
   async update(id: number, payload: T): Promise<any> {
-    const result = await this.repository.findOne(id);
+    let result = await this.repository.findOne(id);
     if (!result) {
       throw new NotFoundException();
     }
-    return this.repository.update(id, payload);
+    result = { ...result, ...payload };
+    return this.repository.save(result);
   }
 
   async delete(id: number): Promise<number> {
