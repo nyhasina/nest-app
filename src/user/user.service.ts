@@ -23,15 +23,4 @@ export class UserService extends BaseService<User> {
     return this.repository.save(user);
   }
 
-  async validateUser(payload: Partial<User>): Promise<any> {
-    const user = await this.findOne({ email: payload.email });
-    if (!user) {
-      throw new NotFoundException();
-    }
-    const isValid = await bcrypt.compare(payload.password, user.password);
-    if (!isValid) {
-      return null;
-    }
-    return user;
-  }
 }
