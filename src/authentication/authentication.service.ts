@@ -7,8 +7,8 @@ export class AuthenticationService {
   constructor(private userService: UserService) {
   }
 
-  async validateUser(email: string, password: string): Promise<any> {
-    const user = await this.userService.findOne({ email });
+  async validateUser(username: string, password: string): Promise<any> {
+    const user = await this.userService.findOne({ username });
     if (!user) {
       throw new UnauthorizedException();
     }
