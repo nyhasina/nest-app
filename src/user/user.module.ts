@@ -10,6 +10,7 @@ import { UserService } from './user.service';
   ],
   exports: [
     TypeOrmModule,
+    UserService
   ],
   controllers: [UserController],
   providers: [UserService],
