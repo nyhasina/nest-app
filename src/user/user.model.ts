@@ -1,11 +1,17 @@
-import { BaseModel } from 'src/shared/models/base.model';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class User extends BaseModel {
+export class User {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
   @Column()
   email: string;
 
   @Column()
   password: string;
+
+  constructor(props: Partial<User>) {
+    Object.assign(this, props);
+  }
 }
