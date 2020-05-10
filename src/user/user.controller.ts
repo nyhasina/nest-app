@@ -22,9 +22,8 @@ export class UserController {
   }
 
   @Post()
-  create(@Body() payload: any): Promise<User> {
-    const user = new User(payload);
-    return this.userService.create(user);
+  create(@Body() payload: Partial<User>): Promise<User> {
+    return this.userService.create(payload);
   }
 
   @Get()
@@ -38,7 +37,7 @@ export class UserController {
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() payload: any): Promise<User> {
+  update(@Param('id') id: number, @Body() payload: Partial<User>): Promise<User> {
     const user = new User(payload);
     return this.userService.update(id, user);
   }
