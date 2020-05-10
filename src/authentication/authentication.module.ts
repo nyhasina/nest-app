@@ -11,7 +11,7 @@ import { AuthenticationService } from './authentication.service';
 @Module({
   imports: [
     UserModule,
-    PassportModule,
+    PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
       secret: jwtConstants.secretKey,
       signOptions: {
