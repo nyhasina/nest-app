@@ -9,12 +9,12 @@ export class BaseService<T> {
     return this.repository.save(payload);
   }
 
-  find(): Promise<T[]> {
-    return this.repository.find();
+  find(options: Partial<T> = {}): Promise<T[]> {
+    return this.repository.find(options);
   }
 
-  async findOne(id: number): Promise<T> {
-    const result = await this.repository.findOne(id);
+  async findOne(options: Partial<T>): Promise<T> {
+    const result = await this.repository.findOne(options);
     if (!result) {
       throw new NotFoundException();
     }
