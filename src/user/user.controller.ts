@@ -11,7 +11,7 @@ export class UserController {
 
   @Post()
   create(@Body() payload: any): Promise<User> {
-    const user = new User().deserialize(payload);
+    const user = new User(payload);
     return this.userService.create(user);
   }
 
@@ -27,7 +27,7 @@ export class UserController {
 
   @Put(':id')
   update(@Param('id') id: number, @Body() payload: any): Promise<User> {
-    const user = new User().deserialize(payload);
+    const user = new User(payload);
     return this.userService.update(id, user);
   }
 
