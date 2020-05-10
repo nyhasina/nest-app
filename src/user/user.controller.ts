@@ -8,13 +8,16 @@ import {
   Post,
   Put,
   Query,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/authentication/guards/jwt-auth.guard';
 import { User } from 'src/user/user.model';
 import { UserService } from 'src/user/user.service';
 
 @Controller('user')
 @UseInterceptors(ClassSerializerInterceptor)
+@UseGuards(JwtAuthGuard)
 export class UserController {
   constructor(
     private userService: UserService,
