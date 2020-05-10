@@ -16,8 +16,8 @@ export class UserController {
   }
 
   @Get()
-  findAll(): Promise<User[]> {
-    return this.userService.find();
+  findAll(@Query() options: Partial<User>): Promise<User[]> {
+    return this.userService.find(options);
   }
 
   @Get(':id')
