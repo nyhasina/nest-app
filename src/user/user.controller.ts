@@ -11,9 +11,9 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import { JwtAuthGuard } from 'src/authentication/guards/jwt-auth.guard';
-import { User } from 'src/user/user.model';
-import { UserService } from 'src/user/user.service';
+import { JwtAuthGuard } from '../authentication/guards/jwt-auth.guard';
+import { User } from './user.model';
+import { UserService } from './user.service';
 
 @Controller('user')
 @UseInterceptors(ClassSerializerInterceptor)
@@ -31,7 +31,7 @@ export class UserController {
   }
 
   @Get()
-  findAll(@Query() options: Partial<User>): Promise<User[]> {
+  findAll(@Query() options?: Partial<User>): Promise<User[]> {
     return this.userService.find(options);
   }
 

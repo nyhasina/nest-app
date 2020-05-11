@@ -10,11 +10,11 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import { AuthenticationService } from 'src/authentication/authentication.service';
-import { JwtAuthGuard } from 'src/authentication/guards/jwt-auth.guard';
-import { LocalAuthGuard } from 'src/authentication/guards/local-auth.guard';
-import { User } from 'src/user/user.model';
-import { UserService } from 'src/user/user.service';
+import { AuthenticationService } from './authentication.service';
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { LocalAuthGuard } from './guards/local-auth.guard';
+import { User } from '../user/user.model';
+import { UserService } from '../user/user.service';
 
 @Controller('auth')
 @UseInterceptors(ClassSerializerInterceptor)
