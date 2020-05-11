@@ -2,9 +2,9 @@ import { Test } from '@nestjs/testing';
 import { AuthenticationModule } from '../authentication/authentication.module';
 import { CoreModule } from '../core/core.module';
 import { SharedModule } from '../shared/shared.module';
-import { UserModule } from './user.module';
 import { UserController } from './user.controller';
 import { User } from './user.model';
+import { UserModule } from './user.module';
 import { UserService } from './user.service';
 
 describe('user', () => {
@@ -17,8 +17,8 @@ describe('user', () => {
         CoreModule,
         SharedModule,
         UserModule,
-        AuthenticationModule
-      ]
+        AuthenticationModule,
+      ],
     }).compile();
 
     userService = moduleRef.get<UserService>(UserService);
