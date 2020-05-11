@@ -3,7 +3,7 @@ import {
   ClassSerializerInterceptor,
   Controller,
   Delete,
-  Get,
+  Get, HttpCode, HttpStatus,
   Param,
   Post,
   Put,
@@ -25,6 +25,7 @@ export class UserController {
   }
 
   @Post()
+  @HttpCode(HttpStatus.OK)
   create(@Body() payload: Partial<User>): Promise<User> {
     return this.userService.create(payload);
   }
@@ -40,6 +41,7 @@ export class UserController {
   }
 
   @Put(':id')
+  @HttpCode(HttpStatus.OK)
   update(@Param('id') id: number, @Body() payload: Partial<User>): Promise<User> {
     const user = new User(payload);
     return this.userService.update(id, user);
