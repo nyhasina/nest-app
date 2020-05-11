@@ -7,7 +7,7 @@ import { User } from './user.model';
 import { UserModule } from './user.module';
 import { UserService } from './user.service';
 
-describe('user', () => {
+describe('User', () => {
   let userController: UserController;
   let userService: UserService;
 
