@@ -4,6 +4,7 @@ import * as request from 'supertest';
 import { AuthenticationModule } from '../src/authentication/authentication.module';
 import { JwtAuthGuard } from '../src/authentication/guards/jwt-auth.guard';
 import { CoreModule } from '../src/core/core.module';
+import { ResponseInterceptor } from '../src/core/interceptors/response.interceptor';
 import { SharedModule } from '../src/shared/shared.module';
 import { UserModule } from '../src/user/user.module';
 import { UserService } from '../src/user/user.service';
@@ -32,6 +33,7 @@ describe('User', () => {
                                 .useClass(JwtMockGuard)
                                 .compile();
     app = moduleRef.createNestApplication();
+    app.useGlobalInterceptors(new ResponseInterceptor());
     await app.init();
   });
 
@@ -39,7 +41,7 @@ describe('User', () => {
     return request(app.getHttpServer())
       .get('/user')
       .expect(200)
-      .expect({ data: userService.find() });
+      .expect({ statusCode: 200, data: userService.find() });
   });
 
   afterAll(async () => {
